@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="449da6a8-c53c-479c-8e6c-8ba4899259f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GSM_Network.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BSC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BSCLayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BSCLayerGroup.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BTS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BTSLayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SMS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Station.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/StationLayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/VBD.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/VBDLayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/VRD.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/VRDLayer.java" afterDir="false" />
-    </list>
+    <list default="true" id="449da6a8-c53c-479c-8e6c-8ba4899259f2" name="Changes" comment="First somehow working prototype with ConcurrentModificationException" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,6 +55,14 @@
       <option name="presentableId" value="Default" />
       <updated>1684239804010</updated>
     </task>
+    <task id="LOCAL-00001" summary="First somehow working prototype with ConcurrentModificationException">
+      <created>1684260408677</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684260408677</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -87,5 +75,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First somehow working prototype with ConcurrentModificationException" />
+    <option name="LAST_COMMIT_MESSAGE" value="First somehow working prototype with ConcurrentModificationException" />
   </component>
 </project>
