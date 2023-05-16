@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class BSCLayer extends StationLayer{
     ArrayList<BSC> bscs = new ArrayList<>();
@@ -10,17 +12,22 @@ public class BSCLayer extends StationLayer{
     }
 
     @Override
-    public void receiveMessage(SMS message){
+    public void receiveMessage(SMS message) {
         BSC minStation = bscs.get(0);
-        for (BSC st : bscs){
-            if (st.getMessagesAmount() == 5){
+        List<BSC> stationsToAdd = new ArrayList<>();
+
+        for (BSC st : bscs) {
+            if (st.getMessagesAmount() == 5) {
                 minStation = new BSC(stationLayer);
-                bscs.add(minStation);
+                stationsToAdd.add(minStation);
+                break;
             }
-            if (st.getMessagesAmount() < minStation.getMessagesAmount()){
+            if (st.getMessagesAmount() < minStation.getMessagesAmount()) {
                 minStation = st;
             }
         }
+
+        bscs.addAll(stationsToAdd);
         minStation.addMessage(message);
     }
 }
