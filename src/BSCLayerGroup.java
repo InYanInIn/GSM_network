@@ -1,17 +1,24 @@
 import java.util.ArrayList;
 
 public class BSCLayerGroup extends StationLayer{
-    private ArrayList<BSCLayer> group = new ArrayList<>();
+    volatile private ArrayList<BSCLayer> group = new ArrayList<>();
 
     public BSCLayerGroup(BTSLayer BTSLayer) {
         group.add(new BSCLayer(BTSLayer));
     }
 
-    public void addBSCLayer(){
+    public synchronized void addBSCLayer(){
         group.add(0, new BSCLayer(group.get(0)));
     }
 
-    public BSCLayer getFirstBSCLayer(){
+    public synchronized BSCLayer getFirstBSCLayer(){
         return group.get(0);
+    }
+
+    public synchronized ArrayList<BSCLayer> getGroup() {
+        return group;
+    }
+    public synchronized BSCLayer getElementByIndex(int n){
+        return group.get(n);
     }
 }

@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class BTSLayer extends StationLayer{
-    ArrayList<BTS> bts = new ArrayList<>();
+    volatile ArrayList<BTS> bts = new ArrayList<>();
     public StationLayer stationLayer;
 
     public BTSLayer(StationLayer stationLayer) {
@@ -10,17 +11,35 @@ public class BTSLayer extends StationLayer{
     }
 
     @Override
-    public void receiveMessage(SMS message){
+    public synchronized void receiveMessage(SMS message) {
         BTS minStation = bts.get(0);
-        for (BTS st : bts){
-            if (st.getMessagesAmount() == 5){
+        List<BTS> stationsToAdd = new ArrayList<>();
+
+        for (BTS st : bts) {
+            if (st.getMessagesAmount() == 5) {
                 minStation = new BTS(stationLayer);
-                bts.add(minStation);
+                stationsToAdd.add(minStation);
+                System.out.println("STATIOON BTS CREATER");
             }
-            if (st.getMessagesAmount() < minStation.getMessagesAmount()){
+            if (st.getMessagesAmount() < minStation.getMessagesAmount()) {
                 minStation = st;
             }
         }
+
+        bts.addAll(stationsToAdd);
         minStation.addMessage(message);
+    }
+
+    public synchronized ArrayList<BTS> getBts() {
+        return bts;
+    }
+
+    public synchronized void removeBTS(BTS btsStation){
+        bts.remove(btsStation);
+    }
+    public synchronized void refreshBTSes(StationLayer stationLayer){
+        for (BTS bts1 : bts){
+            bts1.refresh(stationLayer);
+        }
     }
 }

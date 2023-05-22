@@ -9,6 +9,7 @@ public class VRD extends Station{
     private ArrayList<SMS> receivedSMS = new ArrayList<>();
 
     public VRD(long number, boolean deleteMessagesEvery10Sec) {
+        super();
         receivedMessages = 0;
         this.number = number;
         this.deleteMessagesEvery10Sec = deleteMessagesEvery10Sec;
@@ -19,15 +20,15 @@ public class VRD extends Station{
 
     }
 
-    public long getNumber() {
+    public synchronized long getNumber() {
         return number;
     }
 
     @Override
     public void addMessage(SMS message) {
-        System.out.println("Message received! Message: "+message.getMessage());
+        System.out.println("Message received! Message: "+message.getSenderNumber()+"|"+message.getReceiverNumber());
         receivedSMS.add(message);
-        receivedMessages++;
+        receivedMessages+=1;
     }
 
     public int getReceivedMessages() {

@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="449da6a8-c53c-479c-8e6c-8ba4899259f2" name="Changes" comment="First somehow working prototype with ConcurrentModificationException" />
+    <list default="true" id="449da6a8-c53c-479c-8e6c-8ba4899259f2" name="Changes" comment="First somehow working prototype with ConcurrentModificationException">
+      <change afterPath="$PROJECT_DIR$/src/Graphics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LeftPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MiddlePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NoSuchNumberException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RightPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BSC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BSC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BSCLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BSCLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BSCLayerGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BSCLayerGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BTS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BTSLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BTSLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SMS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StationLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VBDLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VBDLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VRD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VRD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VRDLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VRDLayer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,9 +49,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/Pjatk/GUI/GSM_Network/src"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Pjatk\GUI\GSM_Network\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -62,7 +91,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684260408677</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="First somehow working prototype with ConcurrentModificationException">
+      <created>1684260535110</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684260535110</updated>
+    </task>
+    <task id="LOCAL-00003" summary="First somehow working prototype with ConcurrentModificationException">
+      <created>1684261098882</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684261098882</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

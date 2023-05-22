@@ -3,7 +3,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BSCLayer extends StationLayer{
-    ArrayList<BSC> bscs = new ArrayList<>();
+    volatile ArrayList<BSC> bscs = new ArrayList<>();
     public StationLayer stationLayer;
 
     public BSCLayer(StationLayer stationLayer) {
@@ -12,7 +12,7 @@ public class BSCLayer extends StationLayer{
     }
 
     @Override
-    public void receiveMessage(SMS message) {
+    public synchronized void receiveMessage(SMS message) {
         BSC minStation = bscs.get(0);
         List<BSC> stationsToAdd = new ArrayList<>();
 
@@ -29,5 +29,13 @@ public class BSCLayer extends StationLayer{
 
         bscs.addAll(stationsToAdd);
         minStation.addMessage(message);
+    }
+
+    public ArrayList<BSC> getBscs() {
+        return bscs;
+    }
+
+    public synchronized void removeBSC(BSC bscStation){
+        bscs.remove(bscStation);
     }
 }

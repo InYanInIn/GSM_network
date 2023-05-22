@@ -1,17 +1,22 @@
 public class SMS {
     private String message;
-    private long number;
+    private long senderNumber;
+    private long receiverNumber;
 
-    public SMS(String message, long number) {
+    public SMS(String message, long senderNumber, long receiverNumber) {
         this.message = message;
-        this.number = number;
+        this.senderNumber = senderNumber;
+        this.receiverNumber = receiverNumber;
     }
 
-    public String getMessage() {
+    public synchronized String getMessage() {
         return message;
     }
 
-    public long getNumber() {
-        return number;
+    public synchronized long getSenderNumber() {
+        return senderNumber;
+    }
+    public synchronized long getReceiverNumber() {
+        return receiverNumber;
     }
 }

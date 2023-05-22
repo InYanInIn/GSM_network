@@ -16,12 +16,14 @@ public abstract class Station implements Runnable{
         return ID;
     }
 
-    public int getMessagesAmount(){
+    public synchronized int getMessagesAmount(){
         return messages.size();
     }
 
-    public void addMessage(SMS message){
+    public synchronized void addMessage(SMS message){
         messages.add(message);
     }
+
+
 
 }
