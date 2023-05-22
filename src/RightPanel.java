@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -75,6 +77,18 @@ public class RightPanel extends JPanel implements Runnable{
             stateText.setEditable(false);
             stateText.setText("Remove messages:");
             JCheckBox activeBox = new JCheckBox();
+            activeBox.setSelected(receiver.isDeleteMessagesEvery10Sec());
+            activeBox.addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+                    if (e.getStateChange() == ItemEvent.SELECTED){
+                        receiver.setDeleteMessagesEvery10Sec(true);
+                    }
+                    else {
+                        receiver.setDeleteMessagesEvery10Sec(false);
+                    }
+                }
+            });
 
             activeBox.addActionListener(e -> {
                 if (activeBox.isSelected()){
@@ -150,7 +164,6 @@ public class RightPanel extends JPanel implements Runnable{
     public void run() {
         while (true) {
             repaintScrollPane();
-            System.out.println("0000000000000000000000");
             try {
                 Thread.sleep(2500);
             } catch (InterruptedException e) {

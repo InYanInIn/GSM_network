@@ -33,6 +33,22 @@ public class MiddlePanel extends JPanel implements Runnable {
                 }
             });
 
+            JButton deleteBSCLayer = new JButton("Delete BSC Layer");
+            deleteBSCLayer.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    bscLayerGroup.removeBSCLayer();
+                    senderBTSLayer.refreshBTSes(bscLayerGroup.getFirstBSCLayer());
+                    repaintScrollPane();
+                }
+            });
+
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.setLayout(new GridLayout());
+            buttonPanel.add(createBSCLayer, BorderLayout.WEST);
+            buttonPanel.add(deleteBSCLayer, BorderLayout.EAST);
+
             scrollPaneLeft = new JScrollPane(getBTSPanels(senderBTSLayer));
             scrollPaneLeft.setPreferredSize(new Dimension(180, 650));
 
@@ -60,7 +76,7 @@ public class MiddlePanel extends JPanel implements Runnable {
 
             middleScrollPane = new JScrollPane(contentPanel);
             add(middleScrollPane, BorderLayout.CENTER);
-            add(createBSCLayer, BorderLayout.SOUTH);
+            add(buttonPanel, BorderLayout.SOUTH);
 
             new Thread(this).start();
         }
@@ -102,8 +118,9 @@ public class MiddlePanel extends JPanel implements Runnable {
     }
 
     public synchronized ArrayList<JPanel> createBSCPanels(BSCLayer bscLayer){
+        ArrayList<BSC> bscList = new ArrayList<>(bscLayer.getBscs());
         ArrayList<JPanel> panels = new ArrayList<>();
-        for (BSC bsc : bscLayer.getBscs()){
+        for (BSC bsc : bscList){
             JPanel temp = new JPanel();
             temp.setPreferredSize(new Dimension(150, 60));
             temp.setBackground(Color.WHITE);
@@ -125,18 +142,31 @@ public class MiddlePanel extends JPanel implements Runnable {
                 }
             });
             terminateButton.setText("Terminate");
+            JPanel condition = new JPanel();
+            Color colorCondition;
+            if (bsc.getMessagesAmount() < 3)
+                colorCondition = Color.GREEN;
+            else if(bsc.getMessagesAmount() < 5)
+                colorCondition = Color.ORANGE;
+            else
+                colorCondition = Color.RED;
+
+            condition.setBackground(colorCondition);
+
 
             temp.add(btsUniqueNumber);
             temp.add(numberText);
             temp.add(terminateButton);
+            temp.add(condition);
 
             panels.add(temp);
         }
         return panels;
     }
     public synchronized ArrayList<JPanel> createBTSPanels(BTSLayer btsLayer){
+        ArrayList<BTS> btsList = new ArrayList<>(btsLayer.getBts());
         ArrayList<JPanel> panels = new ArrayList<>();
-        for (BTS bts : btsLayer.getBts()){
+        for (BTS bts : btsList){
             JPanel temp = new JPanel();
             temp.setPreferredSize(new Dimension(200, 60));
             temp.setBackground(Color.WHITE);
@@ -158,10 +188,23 @@ public class MiddlePanel extends JPanel implements Runnable {
                 }
             });
             terminateButton.setText("Terminate");
+            JPanel condition = new JPanel();
+            Color colorCondition;
+            if (bts.getMessagesAmount() < 2)
+                colorCondition = Color.GREEN;
+            else if(bts.getMessagesAmount() < 4)
+                colorCondition = Color.yellow;
+            else if(bts.getMessagesAmount() < 5)
+                colorCondition = Color.ORANGE;
+            else
+                colorCondition = Color.RED;
+
+            condition.setBackground(colorCondition);
 
             temp.add(btsUniqueNumber);
             temp.add(numberText);
             temp.add(terminateButton);
+            temp.add(condition);
 
             panels.add(temp);
         }
@@ -169,42 +212,13 @@ public class MiddlePanel extends JPanel implements Runnable {
     }
 
     public synchronized void repaintScrollPane(){
-        JViewport viewportLeft = scrollPaneLeft.getViewport();
-        JViewport viewportRight = scrollPaneRight.getViewport();
+        scrollPaneLeft.setViewportView(getBTSPanels(senderBTSLayer));
+        scrollPaneLeft.revalidate();
+        scrollPaneLeft.repaint();
 
-// Get the current view component of the viewportRight
-        Component viewComponentRight = viewportRight.getView();
-        Component viewComponentLeft = viewportLeft.getView();
-
-// Check if the view component is a JPanel
-
-        JPanel contentPanelRight = (JPanel) viewComponentRight;
-        JPanel contentPanelLeft = (JPanel) viewComponentLeft;
-
-        // Check if the content panel contains any components
-        if (contentPanelRight.getComponentCount() > 0) {
-            // Remove the first component from the content panel
-            Component firstElementRight = contentPanelRight.getComponent(0);
-            contentPanelRight.remove(firstElementRight);
-        }
-
-        // Repaint the content panel
-        contentPanelRight.revalidate();
-        contentPanelRight.repaint();
-        if (contentPanelLeft.getComponentCount() > 0) {
-            // Remove the first component from the content panel
-            Component firstElementLeft = contentPanelLeft.getComponent(0);
-            contentPanelLeft.remove(firstElementLeft);
-
-            // Repaint the content panel
-            contentPanelLeft.revalidate();
-            contentPanelLeft.repaint();
-        }
-
-        scrollPaneRight.getViewport().setView(getBTSPanels(receiverBTSLayer));
-        scrollPaneRight.setVisible(true);
-        scrollPaneLeft.getViewport().setView(getBTSPanels(senderBTSLayer));
-        scrollPaneRight.setVisible(true);
+        scrollPaneRight.setViewportView(getBTSPanels(receiverBTSLayer));
+        scrollPaneRight.revalidate();
+        scrollPaneRight.repaint();
         // Clear existing BSC Layer panels
         bscGroup.removeAll();
 
@@ -212,7 +226,7 @@ public class MiddlePanel extends JPanel implements Runnable {
         for (int i = 0; i < bscLayerGroup.getGroup().size(); i++) {
             BSCLayer bscLayer = bscLayerGroup.getElementByIndex(i);
             JScrollPane bscLayerScrollPane = new JScrollPane(getBSCPanels(bscLayer));
-            bscLayerScrollPane.setPreferredSize(new Dimension(200, 150));
+            bscLayerScrollPane.setPreferredSize(new Dimension(175, 150));
             bscGroup.add(bscLayerScrollPane);
         }
 
@@ -236,7 +250,7 @@ public class MiddlePanel extends JPanel implements Runnable {
 
             repaintScrollPane();
             try {
-                Thread.sleep(4000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

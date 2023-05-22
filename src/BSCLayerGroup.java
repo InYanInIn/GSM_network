@@ -21,4 +21,7 @@ public class BSCLayerGroup extends StationLayer{
     public synchronized BSCLayer getElementByIndex(int n){
         return group.get(n);
     }
+    public synchronized void removeBSCLayer(){
+        group.remove(0);
+    }
 }

@@ -3,16 +3,16 @@ import java.util.ArrayList;
 public abstract class Station implements Runnable{
 
     private static int GENERALID = 0;
-    private int ID = 0;
+    volatile private int ID = 0;
 
-    ArrayList<SMS> messages = new ArrayList<>();
+    volatile ArrayList<SMS> messages = new ArrayList<>();
 
 
     public Station() {
         this.ID = GENERALID++;
     }
 
-    public int getID() {
+    public synchronized int getID() {
         return ID;
     }
 

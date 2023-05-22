@@ -63,4 +63,12 @@ public class VBD extends Station implements Runnable{
     public String getMessageText() {
         return messageText;
     }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public void setFrequency(long frequency) {
+        this.frequency = frequency;
+    }
 }

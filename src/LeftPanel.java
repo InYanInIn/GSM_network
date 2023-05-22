@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +22,7 @@ public class LeftPanel extends JPanel {
         scrollPane = new JScrollPane(getSenderPanels());
         // Set the content panel as the viewport view
 
-        scrollPane.setPreferredSize(new Dimension(200, 650));
+        scrollPane.setPreferredSize(new Dimension(180, 650));
 
 
         JButton button = new JButton("Add Sender");
@@ -28,7 +30,7 @@ public class LeftPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String message = JOptionPane.showInputDialog("Enter message:");
-                senders.addSender(500, new Random().nextInt(8000000)+1000000, message);
+                senders.addSender(2500, new Random().nextInt(8999999)+1000000, message);
                 scrollPane.setVisible(false);
 
                 repaintScrollPane();
@@ -71,12 +73,31 @@ public class LeftPanel extends JPanel {
             JTextField frequencyText = new JTextField();
             frequencyText.setEditable(false);
             frequencyText.setText("Frequency:");
-            JSlider frequencySlider = new JSlider();
+            JSlider frequencySlider = new JSlider(1000, 5000);
+            frequencySlider.setValue((int) sender.getFrequency());
+            frequencySlider.addChangeListener(new ChangeListener() {
+                @Override
+                public void stateChanged(ChangeEvent e) {
+                    sender.setFrequency(frequencySlider.getValue());
+                }
+            });
 
             JTextField stateText = new JTextField();
             stateText.setEditable(false);
             stateText.setText("State:");
-            JComboBox activeBox = new JComboBox<>();
+            JComboBox activeBox = new JComboBox<>(new String[]{"ACTIVE", "WAITING"});
+            activeBox.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    if ((((JComboBox) e.getSource()).getSelectedItem()).equals("WAITING")) {
+                        sender.setActive(false);
+                    }
+                    else{
+                        sender.setActive(true);
+                    }
+                }
+            });
 
             temp.add(deviceNumberText);
             temp.add(numberText);
@@ -110,27 +131,21 @@ public class LeftPanel extends JPanel {
     }
 
     public void repaintScrollPane(){
-        JViewport viewport = scrollPane.getViewport();
+        ArrayList<JPanel> panels = createSenderPanels();
+        JPanel contentPanel = (JPanel) scrollPane.getViewport().getView();
+        contentPanel.removeAll();
 
-// Get the current view component of the viewport
-        Component viewComponent = viewport.getView();
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.anchor = GridBagConstraints.WEST;
 
-// Check if the view component is a JPanel
-        if (viewComponent instanceof JPanel) {
-            JPanel contentPanel = (JPanel) viewComponent;
-
-            // Check if the content panel contains any components
-            if (contentPanel.getComponentCount() > 0) {
-                // Remove the first component from the content panel
-                Component firstElement = contentPanel.getComponent(0);
-                contentPanel.remove(firstElement);
-
-                // Repaint the content panel
-                contentPanel.revalidate();
-                contentPanel.repaint();
-            }
+        for (int i = 0; i < panels.size(); i++) {
+            JPanel panel = panels.get(i);
+            constraints.gridy = i;
+            contentPanel.add(panel, constraints);
         }
-        scrollPane.getViewport().setView(getSenderPanels());
+
+        contentPanel.revalidate();
+        contentPanel.repaint();
         scrollPane.setVisible(true);
     }
 }

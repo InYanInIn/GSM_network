@@ -16,17 +16,18 @@ public class BTSLayer extends StationLayer{
         List<BTS> stationsToAdd = new ArrayList<>();
 
         for (BTS st : bts) {
-            if (st.getMessagesAmount() == 5) {
-                minStation = new BTS(stationLayer);
-                stationsToAdd.add(minStation);
-                System.out.println("STATIOON BTS CREATER");
-            }
             if (st.getMessagesAmount() < minStation.getMessagesAmount()) {
                 minStation = st;
             }
         }
-
-        bts.addAll(stationsToAdd);
+        if (minStation.getMessagesAmount() == 5){
+            minStation = new BTS(stationLayer);
+            stationsToAdd.add(minStation);
+            System.out.println("STATION BTS CREATED");
+            bts.addAll(stationsToAdd);
+            minStation.addMessage(message);
+            return;
+        }
         minStation.addMessage(message);
     }
 

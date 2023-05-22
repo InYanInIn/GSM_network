@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class VRD extends Station{
+public class VRD extends Station implements Runnable{
 
     private int receivedMessages;
     private long number;
@@ -17,7 +17,17 @@ public class VRD extends Station{
 
     @Override
     public void run() {
+        while (true){
+            try {
+                Thread.sleep(10000);
+                if (deleteMessagesEvery10Sec){
+                    receivedSMS.clear();
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
+        }
     }
 
     public synchronized long getNumber() {
@@ -33,5 +43,13 @@ public class VRD extends Station{
 
     public int getReceivedMessages() {
         return receivedMessages;
+    }
+
+    public boolean isDeleteMessagesEvery10Sec() {
+        return deleteMessagesEvery10Sec;
+    }
+
+    public void setDeleteMessagesEvery10Sec(boolean deleteMessagesEvery10Sec) {
+        this.deleteMessagesEvery10Sec = deleteMessagesEvery10Sec;
     }
 }
