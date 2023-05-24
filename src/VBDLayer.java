@@ -19,7 +19,7 @@ public class VBDLayer extends StationLayer{
     }
 
     public void removeSender(VBD vbd){
-        vbd.active = false;
+        vbd.setActive(false);
         senders.remove(vbd);
 
     }

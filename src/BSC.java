@@ -1,5 +1,6 @@
 public class BSC extends Station{
     public StationLayer stationLayer;
+    private boolean active = true;
 
     public BSC(StationLayer stationLayer) {
         super();
@@ -11,7 +12,8 @@ public class BSC extends Station{
         try {
             int randTime = (int)(Math.random()*11+5)*1000;
             Thread.sleep(randTime);
-            sendMessage(messages.remove(0));
+            if(active)
+                sendMessage(messages.remove(0));
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -19,13 +21,17 @@ public class BSC extends Station{
     }
 
     @Override
-    public void  addMessage(SMS message) {
+    public void  addMessage(String message) {
         messages.add(message);
         Thread mess = new Thread(this);
         mess.start();
     }
 
-    public void sendMessage(SMS message){
+    public void sendMessage(String message){
         stationLayer.receiveMessage(message);
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

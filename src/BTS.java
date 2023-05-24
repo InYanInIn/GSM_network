@@ -23,13 +23,13 @@ public class BTS extends Station{
     }
 
     @Override
-    public synchronized void addMessage(SMS message) {
+    public synchronized void addMessage(String message) {
         messages.add(message);
         Thread mess = new Thread(this);
         mess.start();
     }
 
-    public synchronized void sendMessage(SMS message){
+    public synchronized void sendMessage(String message){
         stationLayer.receiveMessage(message);
     }
 

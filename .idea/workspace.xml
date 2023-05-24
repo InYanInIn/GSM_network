@@ -2,15 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="449da6a8-c53c-479c-8e6c-8ba4899259f2" name="Changes" comment="First somehow working prototype with ConcurrentModificationException">
+      <change afterPath="$PROJECT_DIR$/src/Decoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Encoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SMSSaver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BSC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BSC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BSCLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BSCLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BSCLayerGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BSCLayerGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BTS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BTSLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BTSLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LeftPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LeftPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Graphics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graphics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MiddlePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MiddlePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RightPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RightPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SMS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StationLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/VBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VBDLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VBDLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/VRD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VRD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VRDLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VRDLayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +34,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -36,14 +50,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/Pjatk/GUI/GSM_Network/src",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Проекты 2.0/Java Projects/RPG-game&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -52,7 +66,21 @@
       <recent name="D:\Pjatk\GUI\GSM_Network\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Decoder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Decoder" />
+      <module name="GSM_Network" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Encoder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Encoder" />
+      <module name="GSM_Network" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="GSM_Network" />
@@ -63,6 +91,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Decoder" />
+        <item itemvalue="Application.Encoder" />
       </list>
     </recent_temporary>
   </component>
@@ -103,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684786529518</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="First somehow working prototype with ConcurrentModificationException">
+      <created>1684798595716</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684798595716</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,5 +157,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First somehow working prototype with ConcurrentModificationException" />
     <option name="LAST_COMMIT_MESSAGE" value="First somehow working prototype with ConcurrentModificationException" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GSM_Network$Decoder.ic" NAME="Decoder Coverage Results" MODIFIED="1684947020994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

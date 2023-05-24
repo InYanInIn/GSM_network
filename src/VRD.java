@@ -35,9 +35,11 @@ public class VRD extends Station implements Runnable{
     }
 
     @Override
-    public void addMessage(SMS message) {
-        System.out.println("Message received! Message: "+message.getSenderNumber()+"|"+message.getReceiverNumber());
-        receivedSMS.add(message);
+    public void addMessage(String message) {
+
+        SMS sms = Decoder.decodeSMS(message);
+        System.out.println("Message received! Message: "+sms.getSenderNumber()+"|"+sms.getReceiverNumber());
+        receivedSMS.add(sms);
         receivedMessages+=1;
     }
 
@@ -51,5 +53,9 @@ public class VRD extends Station implements Runnable{
 
     public void setDeleteMessagesEvery10Sec(boolean deleteMessagesEvery10Sec) {
         this.deleteMessagesEvery10Sec = deleteMessagesEvery10Sec;
+    }
+
+    public ArrayList<SMS> getReceivedSMS() {
+        return receivedSMS;
     }
 }

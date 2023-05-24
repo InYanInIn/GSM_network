@@ -22,6 +22,7 @@ public class BSCLayerGroup extends StationLayer{
         return group.get(n);
     }
     public synchronized void removeBSCLayer(){
+        group.get(0).sentAllMessagesImmideatly();
         group.remove(0);
     }
 }

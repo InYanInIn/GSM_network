@@ -12,22 +12,25 @@ public class BSCLayer extends StationLayer{
     }
 
     @Override
-    public synchronized void receiveMessage(SMS message) {
+    public synchronized void receiveMessage(String message) {
         BSC minStation = bscs.get(0);
         List<BSC> stationsToAdd = new ArrayList<>();
 
         for (BSC st : bscs) {
-            if (st.getMessagesAmount() == 5) {
-                minStation = new BSC(stationLayer);
-                stationsToAdd.add(minStation);
-                break;
-            }
             if (st.getMessagesAmount() < minStation.getMessagesAmount()) {
                 minStation = st;
             }
         }
+        if (minStation.getMessagesAmount() == 5) {
+            minStation = new BSC(stationLayer);
+            minStation.addMessage(message);
+            stationsToAdd.add(minStation);
+            System.out.println("Station BSC created!!!");
+            bscs.addAll(stationsToAdd);
+            return;
+        }
 
-        bscs.addAll(stationsToAdd);
+
         minStation.addMessage(message);
     }
 
@@ -37,5 +40,14 @@ public class BSCLayer extends StationLayer{
 
     public synchronized void removeBSC(BSC bscStation){
         bscs.remove(bscStation);
+    }
+
+    public synchronized void sentAllMessagesImmideatly(){
+        for (BSC bsc : bscs){
+            bsc.setActive(false);
+            for (String message : bsc.getMessages()) {
+                bsc.sendMessage(message);
+            }
+        }
     }
 }

@@ -1,9 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Graphics extends JFrame {
     public Graphics(VRDLayer receivers, BTSLayer btsReceivers, BSCLayerGroup bscGroup , BTSLayer btsSenders, VBDLayer senders){
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                SMSSaver.saveInfo(senders);
+                System.exit(0);
+            }
+        });
         setLayout(new BorderLayout());
 
         LeftPanel leftPanel = new LeftPanel(senders);

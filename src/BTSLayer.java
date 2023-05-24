@@ -11,7 +11,7 @@ public class BTSLayer extends StationLayer{
     }
 
     @Override
-    public synchronized void receiveMessage(SMS message) {
+    public synchronized void receiveMessage(String message) {
         BTS minStation = bts.get(0);
         List<BTS> stationsToAdd = new ArrayList<>();
 
@@ -22,10 +22,10 @@ public class BTSLayer extends StationLayer{
         }
         if (minStation.getMessagesAmount() == 5){
             minStation = new BTS(stationLayer);
+            minStation.addMessage(message);
             stationsToAdd.add(minStation);
             System.out.println("STATION BTS CREATED");
             bts.addAll(stationsToAdd);
-            minStation.addMessage(message);
             return;
         }
         minStation.addMessage(message);

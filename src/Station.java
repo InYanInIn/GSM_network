@@ -5,7 +5,7 @@ public abstract class Station implements Runnable{
     private static int GENERALID = 0;
     volatile private int ID = 0;
 
-    volatile ArrayList<SMS> messages = new ArrayList<>();
+    protected volatile ArrayList<String> messages = new ArrayList<>();
 
 
     public Station() {
@@ -20,10 +20,11 @@ public abstract class Station implements Runnable{
         return messages.size();
     }
 
-    public synchronized void addMessage(SMS message){
+    public synchronized void addMessage(String message){
         messages.add(message);
     }
 
-
-
+    public ArrayList<String> getMessages() {
+        return messages;
+    }
 }

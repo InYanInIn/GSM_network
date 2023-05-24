@@ -88,11 +88,11 @@ public class MiddlePanel extends JPanel implements Runnable {
         contentPanel.setLayout(gridBagLayout);
 
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.WEST; // Align components to the left within their cells
+        constraints.anchor = GridBagConstraints.WEST;
 
         for (int i = 0; i < panels.size(); i++) {
             JPanel panel = panels.get(i);
-            constraints.gridy = i; // Set the row index for each component
+            constraints.gridy = i;
             contentPanel.add(panel, constraints);
         }
 
@@ -106,11 +106,11 @@ public class MiddlePanel extends JPanel implements Runnable {
         contentPanel.setLayout(gridBagLayout);
 
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.WEST; // Align components to the left within their cells
+        constraints.anchor = GridBagConstraints.WEST;
 
         for (int i = 0; i < panels.size(); i++) {
             JPanel panel = panels.get(i);
-            constraints.gridy = i; // Set the row index for each component
+            constraints.gridy = i;
             contentPanel.add(panel, constraints);
         }
 
@@ -134,18 +134,19 @@ public class MiddlePanel extends JPanel implements Runnable {
             numberText.setText(String.valueOf(bsc.getID()));
 
             JButton terminateButton = new JButton();
-            terminateButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    bscLayer.removeBSC(bsc);
-                    repaintScrollPane();
-                }
+            terminateButton.addActionListener(e -> {
+                bscLayer.removeBSC(bsc);
+                repaintScrollPane();
             });
             terminateButton.setText("Terminate");
             JPanel condition = new JPanel();
             Color colorCondition;
-            if (bsc.getMessagesAmount() < 3)
+            if (bsc.getMessagesAmount() < 1)
+                colorCondition = Color.WHITE;
+            else if(bsc.getMessagesAmount() < 2)
                 colorCondition = Color.GREEN;
+            else if(bsc.getMessagesAmount() < 3)
+                colorCondition = Color.yellow;
             else if(bsc.getMessagesAmount() < 5)
                 colorCondition = Color.ORANGE;
             else
@@ -180,19 +181,18 @@ public class MiddlePanel extends JPanel implements Runnable {
             numberText.setText(String.valueOf(bts.getID()));
 
             JButton terminateButton = new JButton();
-            terminateButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    btsLayer.removeBTS(bts);
-                    repaintScrollPane();
-                }
+            terminateButton.addActionListener(e -> {
+                btsLayer.removeBTS(bts);
+                repaintScrollPane();
             });
             terminateButton.setText("Terminate");
             JPanel condition = new JPanel();
             Color colorCondition;
-            if (bts.getMessagesAmount() < 2)
+            if (bts.getMessagesAmount() < 1)
+                colorCondition = Color.WHITE;
+            else if(bts.getMessagesAmount() < 2)
                 colorCondition = Color.GREEN;
-            else if(bts.getMessagesAmount() < 4)
+            else if(bts.getMessagesAmount() < 3)
                 colorCondition = Color.yellow;
             else if(bts.getMessagesAmount() < 5)
                 colorCondition = Color.ORANGE;

@@ -4,9 +4,10 @@ public class VRDLayer extends StationLayer{
     private ArrayList<VRD> receivers = new ArrayList<>();
 
     @Override
-    public synchronized void receiveMessage(SMS message) {
+    public synchronized void receiveMessage(String message) {
+        SMS sms = Decoder.decodeSMS(message);
         try {
-            long number = message.getReceiverNumber();
+            long number = sms.getReceiverNumber();
             for(VRD r : receivers){
                 if (r.getNumber() == number){
                     r.addMessage(message);

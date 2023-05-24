@@ -5,7 +5,7 @@ public abstract class StationLayer {
     protected StationLayer() {
     }
 
-    public synchronized void  receiveMessage(SMS message) {
+    public synchronized void  receiveMessage(String message) {
 
     }
 }

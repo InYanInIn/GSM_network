@@ -9,6 +9,9 @@ public class SMS {
         this.receiverNumber = receiverNumber;
     }
 
+    public SMS() {
+    }
+
     public synchronized String getMessage() {
         return message;
     }
@@ -18,5 +21,17 @@ public class SMS {
     }
     public synchronized long getReceiverNumber() {
         return receiverNumber;
+    }
+
+    public synchronized void setMessage(String message) {
+        this.message = message;
+    }
+
+    public synchronized void setSenderNumber(long senderNumber) {
+        this.senderNumber = senderNumber;
+    }
+
+    public synchronized void setReceiverNumber(long receiverNumber) {
+        this.receiverNumber = receiverNumber;
     }
 }
